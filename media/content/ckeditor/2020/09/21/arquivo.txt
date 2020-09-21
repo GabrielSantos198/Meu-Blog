@@ -1,0 +1,100 @@
+PS C:\Users\lucimar\tutorialdjango> git push heroku master
+Enumerating objects: 54, done.
+Counting objects: 100% (54/54), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (49/49), done.
+Writing objects: 100% (54/54), 18.10 KiB | 772.00 KiB/s, done.
+Total 54 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Python app detected
+remote: -----> Installing python-3.8.5
+remote: -----> Installing pip 20.1.1, setuptools 47.1.1 and wheel 0.34.2
+remote: -----> Installing SQLite3
+remote: -----> Installing requirements with pip
+remote:        Collecting Django==3.1
+remote:          Downloading Django-3.1-py3-none-any.whl (7.8 MB)
+remote:        Collecting django-environ==0.4.5
+remote:          Downloading django_environ-0.4.5-py2.py3-none-any.whl (21 kB)
+remote:        Collecting gunicorn==20.0.4
+remote:          Downloading gunicorn-20.0.4-py2.py3-none-any.whl (77 kB)
+remote:        Collecting psycopg2==2.8.5
+remote:          Downloading psycopg2-2.8.5.tar.gz (380 kB)
+remote:        Collecting whitenoise==5.2.0
+remote:          Downloading whitenoise-5.2.0-py2.py3-none-any.whl (19 kB)
+remote:        Collecting sqlparse>=0.2.2
+remote:          Downloading sqlparse-0.3.1-py2.py3-none-any.whl (40 kB)
+remote:        Collecting asgiref~=3.2.10
+remote:          Downloading asgiref-3.2.10-py3-none-any.whl (19 kB)
+remote:        Collecting pytz
+remote:          Downloading pytz-2020.1-py2.py3-none-any.whl (510 kB)
+remote:        Building wheels for collected packages: psycopg2
+remote:          Building wheel for psycopg2 (setup.py): started
+remote:          Building wheel for psycopg2 (setup.py): finished with status 'done'
+remote:          Created wheel for psycopg2: filename=psycopg2-2.8.5-cp38-cp38-linux_x86_64.whl size=483220 sha256=9e4c9a8f54deb6db243a8bff3292c905c84ef9b2f40fa03e71c89d1a526aac7d
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-9fg3uuro/wheels/35/64/21/9c9e2c1bb9cd6bca3c1b97b955615e37fd309f8e8b0b9fdf1a
+remote:        Successfully built psycopg2
+remote:        Installing collected packages: sqlparse, asgiref, pytz, Django, django-environ, gunicorn, psycopg2, whitenoise
+remote:        Successfully installed Django-3.1 asgiref-3.2.10 django-environ-0.4.5 gunicorn-20.0.4 psycopg2-2.8.5 pytz-2020.1 sqlparse-0.3.1 whitenoise-5.2.0
+remote: -----> $ python manage.py collectstatic --noinput
+remote:        Traceback (most recent call last):
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/environ/environ.py", line 273, in get_value
+remote:            value = self.ENVIRON[var]
+remote:          File "/app/.heroku/python/lib/python3.8/os.py", line 675, in __getitem__
+remote:            raise KeyError(key) from None
+remote:        KeyError: 'ALLOWED_HOSTS'
+remote:        During handling of the above exception, another exception occurred:
+remote:        Traceback (most recent call last):
+remote:          File "manage.py", line 22, in <module>
+remote:            main()
+remote:          File "manage.py", line 18, in main
+remote:            execute_from_command_line(sys.argv)
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/core/management/__init__.py", line 401, in execute_from_command_line
+remote:            utility.execute()
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/core/management/__init__.py", line 395, in execute
+remote:            self.fetch_command(subcommand).run_from_argv(self.argv)
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/core/management/__init__.py", line 231, in fetch_command
+remote:            settings.INSTALLED_APPS
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/conf/__init__.py", line 83, in __getattr__
+remote:            self._setup(name)
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/conf/__init__.py", line 70, in _setup
+remote:            self._wrapped = Settings(settings_module)
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/django/conf/__init__.py", line 177, in __init__
+remote:            mod = importlib.import_module(self.SETTINGS_MODULE)
+remote:          File "/app/.heroku/python/lib/python3.8/importlib/__init__.py", line 127, in import_module
+remote:            return _bootstrap._gcd_import(name[level:], package, level)
+remote:          File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+remote:          File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+remote:          File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+remote:          File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+remote:          File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+remote:          File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+remote:          File "/tmp/build_e91b7a68/tutorialdjango/settings/heroku.py", line 10, in <module>
+remote:            ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/environ/environ.py", line 179, in list
+remote:            return self.get_value(var, cast=list if not cast else [cast], default=default)
+remote:          File "/app/.heroku/python/lib/python3.8/site-packages/environ/environ.py", line 277, in get_value
+remote:            raise ImproperlyConfigured(error_msg)
+remote:        django.core.exceptions.ImproperlyConfigured: Set the ALLOWED_HOSTS environment variable
+remote:
+remote:  !     Error while running '$ python manage.py collectstatic --noinput'.
+remote:        See traceback above for details.
+remote:
+remote:        You may need to update application code to resolve this error.
+remote:        Or, you can disable collectstatic for this application:
+remote:
+remote:           $ heroku config:set DISABLE_COLLECTSTATIC=1
+remote:
+remote:        https://devcenter.heroku.com/articles/django-assets
+remote:  !     Push rejected, failed to compile Python app.
+remote:
+remote:  !     Push failed
+remote: Verifying deploy...
+remote:
+remote: !       Push rejected to infinite-gorge-41592.
+remote:
+To https://git.heroku.com/infinite-gorge-41592.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/infinite-gorge-41592.git'
+PS C:\Users\lucimar\tutorialdjango>
