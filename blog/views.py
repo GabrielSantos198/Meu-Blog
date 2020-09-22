@@ -8,6 +8,12 @@ class HomePageView(ListView):
 	template_name = 'index.html'
 
 
+class Noticias(ListView):
+	queryset = Post.objects.filter(status='Notícias')
+	template_name = 'noticias.html'
+
+
+
 class Post(DetailView):
 	model = Post
 	template_name = 'detalhes.html'
