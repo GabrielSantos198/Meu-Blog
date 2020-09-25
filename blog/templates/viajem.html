@@ -44,8 +44,8 @@
 
 
 {% block content %}
-<h3 id="noticias" class="pb-4 mb-4 font-italic border-bottom">
-	Notícias
+<h3 id="viajem" class="pb-4 mb-4 font-italic border-bottom">
+	Viajem
   </h3>
   {% for post in object_list %}
 	<div class="blog-post">
@@ -56,20 +56,4 @@
 		{{ post.summary|safe }}
 	</div><!-- /.blog-post -->
   {% endfor %}
-
-  <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
-        {% endif %}
-
-        <span class="current">
-            {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
-        {% endif %}
-    </span>
-</div>
 {% endblock %}

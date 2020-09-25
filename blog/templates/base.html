@@ -8,7 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Blog Template · Bootstrap</title>
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
 	<link rel='stylesheet' href="{% static 'css/style.css' %}">
     <!-- Bootstrap core CSS -->
@@ -50,11 +50,11 @@
     <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="text-muted" href="#">Subscribe</a>
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
+		<div class="col-4 pt-1">
+			<a class="text-muted" href="#">Subscribe</a>
+		  </div>
+		<div class="col-4 text-center">
+        <a class="blog-header-logo text-dark" href="/">Blog</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#" aria-label="Search">
@@ -67,15 +67,15 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="{% url 'noticias' %}">Notícias</a>
-      <a class="p-2 text-muted" href="#">Tecnológia</a>
-      <a class="p-2 text-muted" href="#">Cultura</a>
-      <a class="p-2 text-muted" href="#">Tirinhas</a>
-      <a class="p-2 text-muted" href="#">Motivação</a>
-      <a class="p-2 text-muted" href="#">Ciência</a>
-      <a class="p-2 text-muted" href="#">Saúde</a>
-      <a class="p-2 text-muted" href="#">Estilo</a>
-      <a class="p-2 text-muted" href="#">Viajem</a>
+	  <a class="p-2 text-muted" href="/">Home</a>
+      <a class="p-2 text-muted" href="{% url 'noticias' %}#noticias">Nóticias</a>
+	  <a class="p-2 text-muted" href="{% url 'tecnologia' %}#tecnologia">Tecnológia</a>
+      <a class="p-2 text-muted" href="{% url 'cultura' %}#cultura">Cultura</a>
+      <a class="p-2 text-muted" href="{% url 'tirinhas' %}#tirinhas">Tirinhas</a>
+      <a class="p-2 text-muted" href="{% url 'motivacao' %}#motivacao">Motivação</a>
+      <a class="p-2 text-muted" href="{% url 'ciencia' %}#ciencia">Ciência</a>
+      <a class="p-2 text-muted" href="{% url 'saude' %}#saude">Saúde</a>
+      <a class="p-2 text-muted" href="{% url 'viajem' %}#viajem">Viajem</a>
     </nav>
   </div>
   {% block sub_header %}{% endblock %}
@@ -126,9 +126,9 @@
 </main><!-- /.container -->
 
 <footer class="blog-footer">
-  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>Copyright ©2020 Gabriel Santana</p>
   <p>
-    <a href="#">Back to top</a>
+    <a href="#">De volta ao topo</a>
   </p>
 </footer>
 </body>

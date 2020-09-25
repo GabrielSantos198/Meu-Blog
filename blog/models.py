@@ -12,7 +12,6 @@ class Post(models.Model):
 		('motivação','Motivação'),
 		('ciência','Ciência'),
 		('saúde','Saúde'),
-		('estilo','Estilo'),
 		('viajem','Viajem'),
 	)
 	title = models.CharField(max_length=255)
@@ -20,13 +19,15 @@ class Post(models.Model):
 	summary = RichTextField()
 	content = RichTextUploadingField()
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	created_at = models.DateField(auto_now_add=True)
+	created_at = models.DateTimeField(auto_now_add=True)
 	status = models.CharField(max_length=11,
 							  choices=STATUS,
 							  default='notícias')
-
+	
 	class Meta:
-		ordering = ['-created_at']
+		ordering = ('-created_at',)
+
+
 
 	def __str__(self):
 		return self.title
