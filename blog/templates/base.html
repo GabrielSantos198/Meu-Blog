@@ -13,7 +13,7 @@
 	<link rel='stylesheet' href="{% static 'css/style.css' %}">
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -26,6 +26,47 @@
 
 
     <style>
+	ul label{
+		font-size: 30px;
+		margin-left: -40px;
+		margin-bottom: -18px;
+		display: none;
+	}
+	
+	ul{
+		margin-top: -25px;
+	}
+
+	  #check{
+		  display: none;
+	  }
+
+	  #logo{
+		  text-align: center;
+		  margin-right: auto;
+		  margin-left: auto;
+		  left: 13%;
+	  }
+	  .pagination {
+			margin-bottom: 20px;
+		}
+
+		.edit-paginator{
+			display: flex;
+			display: inline-block;
+			font-size: 30px;
+		}
+
+	  .step-links {
+    		position: relative;
+    		margin-left: auto;
+			margin-right: auto;;
+		}
+
+	  .step-links .current {
+    		margin-left: 5px;
+   			margin-right: 5px;
+		}
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -40,6 +81,59 @@
           font-size: 3.5rem;
         }
       }
+
+	  @media (max-width: 991px) {
+		.searchbutton{
+			margin-top: 2px;
+			position: absolute;
+			right: 7%;
+		}
+
+		#searchform{
+		  margin-right: 18%;
+		}
+
+	  }
+
+
+	  @media (max-width: 768px){
+		ul label{
+			display: block;
+		}
+
+		.nav-scroller{
+			background-color: #343a40;
+			width: 100%;
+			height: 100vh;
+			margin-left: -150%;
+		}
+		
+		.nav-scroller .nav{
+			display: flex;
+			flex-direction: column;
+			margin-top: 80px;
+		}
+
+		.nav-scroller .nav a{
+			margin-bottom: 15px;
+		}
+
+		.color-link{
+			color: #fff;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		#responsive{
+			margin-top: -102vh;
+		}
+
+		#check:checked ~ .nav a{
+		    margin-left: 0px;
+			
+	}
+
+	  }
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
@@ -47,44 +141,49 @@
     <link href="blog.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
+  <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-		<div class="col-4 pt-1">
-			<a class="text-muted" href="#">Subscribe</a>
-		  </div>
-		<div class="col-4 text-center">
+	  <div id="logo" class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="/">Blog</a>
-      </div>
+	</div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="text-muted" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+        <form id="searchform" action="{% url 'blog_search_list_view' %}" method="get" accept-charset="utf-8">
+			<input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
+			<button class="searchbutton" type="submit">
+			  <i class="fa fa-search"></i>
+			</button>
+		</form>
+	  
       </div>
-    </div>
+	</div>
+<ul>
+	<input type="checkbox" id="check">
+	<label for="check" class="checkbtn">
+		<li class="fas fa-bars"></li>
+	</label>
+</ul>
   </header>
-
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-	  <a class="p-2 text-muted" href="/">Home</a>
-      <a class="p-2 text-muted" href="{% url 'noticias' %}#noticias">Nóticias</a>
-	  <a class="p-2 text-muted" href="{% url 'tecnologia' %}#tecnologia">Tecnológia</a>
-      <a class="p-2 text-muted" href="{% url 'cultura' %}#cultura">Cultura</a>
-      <a class="p-2 text-muted" href="{% url 'tirinhas' %}#tirinhas">Tirinhas</a>
-      <a class="p-2 text-muted" href="{% url 'motivacao' %}#motivacao">Motivação</a>
-      <a class="p-2 text-muted" href="{% url 'ciencia' %}#ciencia">Ciência</a>
-      <a class="p-2 text-muted" href="{% url 'saude' %}#saude">Saúde</a>
-      <a class="p-2 text-muted" href="{% url 'viajem' %}#viajem">Viajem</a>
-    </nav>
+	  <a class="p-2 text-muted" href="/"><span class="color-link">Home</span></a>
+      <a class="p-2 text-muted" href="{% url 'noticias' %}#noticias"><span class="color-link">Nóticias</span></a>
+	  <a class="p-2 text-muted" href="{% url 'tecnologia' %}#tecnologia"><span class="color-link">Tecnológia</span></a>
+      <a class="p-2 text-muted" href="{% url 'cultura' %}#cultura"><span class="color-link">Cultura</span></a>
+      <a class="p-2 text-muted" href="{% url 'tirinhas' %}#tirinhas"><span class="color-link">Tirinhas</span></a>
+      <a class="p-2 text-muted" href="{% url 'motivacao' %}#motivacao"><span class="color-link">Motivação</span></a>
+      <a class="p-2 text-muted" href="{% url 'ciencia' %}#ciencia"><span class="color-link">Ciência</span></a>
+      <a class="p-2 text-muted" href="{% url 'saude' %}#saude"><span class="color-link">Saúde</span></a>
+      <a class="p-2 text-muted" href="{% url 'viajem' %}#viajem"><span class="color-link">Viajem</span></a>
+	</nav>
   </div>
   {% block sub_header %}{% endblock %}
 </div>
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
+		<div id="pagina"></div>
     {% block content %}{% endblock %}
-
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
@@ -94,25 +193,24 @@
       </div>
 
       <div class="p-4">
-        <h4 class="font-italic">Archives</h4>
+        <h4 class="font-italic">Publicações</h4>
         <ol class="list-unstyled mb-0">
-          <li><a href="#">March 2014</a></li>
-          <li><a href="#">February 2014</a></li>
-          <li><a href="#">January 2014</a></li>
-          <li><a href="#">December 2013</a></li>
-          <li><a href="#">November 2013</a></li>
-          <li><a href="#">October 2013</a></li>
-          <li><a href="#">September 2013</a></li>
-          <li><a href="#">August 2013</a></li>
-          <li><a href="#">July 2013</a></li>
-          <li><a href="#">June 2013</a></li>
-          <li><a href="#">May 2013</a></li>
-          <li><a href="#">April 2013</a></li>
+          <li><a href="#">Setembro 2020</a></li>
+          <li><a href="#">Outubro 2020</a></li>
+          <li><a href="#">Novembro 2020</a></li>
+          <li><a href="#">Dezembro 2020</a></li>
+          <li><a href="#">Janeiro 2021</a></li>
+          <li><a href="#">Fevereiro 2021</a></li>
+          <li><a href="#">Março 2021</a></li>
+          <li><a href="#">Abriu 2021</a></li>
+          <li><a href="#">Maio 2021</a></li>
+		  <li><a href="#">Junho 2021</a></li>
+		  <li><a href="#">Julho 2021</a></li>
         </ol>
       </div>
 
       <div class="p-4">
-        <h4 class="font-italic">Elsewhere</h4>
+        <h4 class="font-italic">Redes</h4>
         <ol class="list-unstyled">
           <li><a href="#">GitHub</a></li>
           <li><a href="#">Twitter</a></li>
@@ -124,6 +222,22 @@
   </div><!-- /.row -->
 
 </main><!-- /.container -->
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <div class="edit-paginator"><a href="?page={{ page_obj.previous_page_number }}#pagina"><i class="fas fa-arrow-left"></i></a></div>
+        {% endif %}
+
+        <span class="edit-paginator" class="current">
+            {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <div class="edit-paginator"><a href="?page={{ page_obj.next_page_number }}#pagina"><i class="fas fa-arrow-right"></i></a></div>
+        {% endif %}
+    </span>
+</div>
 
 <footer class="blog-footer">
   <p>Copyright ©2020 Gabriel Santana</p>

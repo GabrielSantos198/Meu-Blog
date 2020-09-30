@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
-
 {% block sub_header %}
+<div id="responsive"></div>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
+	<div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-    </div>
-  </div>
+	</div>
+</div>
 
   <div class="row mb-2">
     <div class="col-md-6">
@@ -43,6 +43,7 @@
 {% endblock %}
 
 
+
 {% block content %}
 <h3 id="noticias" class="pb-4 mb-4 font-italic border-bottom">
 	Notícias
@@ -56,20 +57,4 @@
 		{{ post.summary|safe }}
 	</div><!-- /.blog-post -->
   {% endfor %}
-
-  <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
-        {% endif %}
-
-        <span class="current">
-            {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
-        {% endif %}
-    </span>
-</div>
 {% endblock %}
