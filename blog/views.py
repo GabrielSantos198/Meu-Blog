@@ -19,10 +19,14 @@ class Search(ListView):
 		result = super(Search, self).get_queryset()
 		query = self.request.GET.get('q')
 		if query:
-			object_list = self.Post.objects.filter(title__icontains=query) |  self.Post.objects.filter(content__icontains=query) 
-		else:
-			object_list = self.Post.objects.all()
-		return object_list
+			query_list = query.split()
+			result = result.filter(
+				reduce(operator.and_,
+				(Post.objects.get(title__icontains=q) for q in query_list)) |
+				reduce(operator.and_,
+				(Post.objects.get(content__icontains=q) for q in query_list))
+				)
+			return result
 
 class PostView(DetailView):
 	model = Post
