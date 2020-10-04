@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 import operator
 from functools import reduce
+from django.db.models import Q
 
 # Create your views here.
 class Noticias(ListView):
@@ -13,20 +14,22 @@ class Noticias(ListView):
 
 
 class Search(ListView):
-	queryset = Post.objects.all()
-	paginate_by = 10
-	def get_queryset(self):
-		result = super(Search, self).get_queryset()
-		query = self.request.GET.get('q')
-		if query:
-			query_list = query.split()
-			result = result.filter(
-				reduce(operator.and_,
-				(Post.objects.get(title__icontains=q) for q in query_list)) |
-				reduce(operator.and_,
-				(Post.objects.get(content__icontains=q) for q in query_list))
-				)
-			return result
+    queryset = Post.objects.all()
+    paginate_by = 10
+    template_name = "search.html"
+
+    def get_queryset(self):
+        result = super(Search, self).get_queryset()
+        query = self.request.GET.get("q")
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_, (Q(title__icontains=x) for x in query_list))
+            ) | result.filter(
+                reduce(operator.and_, (Q(content__icontains=x) for x in query_list))
+            )
+            return result
+
 
 class PostView(DetailView):
 	model = Post

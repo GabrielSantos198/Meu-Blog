@@ -21,4 +21,5 @@ urlpatterns = [
 	path('posts/viajem/', views.Viajem.as_view(), name='viajem'),
 	path('posts/viajem/posts/<slug:slug>', views.PostView.as_view(), name='viajem'),
 	path('search/', views.Search.as_view(), name='blog_search_list_view'),
+	path('search/posts/<slug:slug>', views.PostView.as_view(), name="blog_search_list_view"),
 ]
