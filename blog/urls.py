@@ -3,8 +3,9 @@ from django.urls import path
 from blog import views
 
 urlpatterns = [
-	path('posts/<slug:slug>', views.PostView.as_view(), name='post'),
-	path('', views.Noticias.as_view(), name='noticias'),
+    path('', views.Principal.as_view(), name='principal'),
+	path('posts/noticias/', views.Noticias.as_view(), name='noticias'),
+	path('posts/noticias/posts/<slug:slug>', views.PostView.as_view(), name='noticias'),
 	path('posts/<slug:slug>', views.PostView.as_view(), name='noticias'),
 	path('posts/tecnologia/', views.Tecnologia.as_view(), name='tecnologia'),
 	path('posts/tecnologia/posts/<slug:slug>', views.PostView.as_view(), name='tecnologia'),

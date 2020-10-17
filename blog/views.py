@@ -7,6 +7,14 @@ from functools import reduce
 from django.db.models import Q
 
 # Create your views here.
+
+class Principal(ListView):
+    paginate_by = 5
+    model = Post
+    template_name = 'index.html'
+
+
+
 class Noticias(ListView):
 	paginate_by = 5
 	queryset = Post.objects.filter(status='notícias')
@@ -28,7 +36,7 @@ class Search(ListView):
             ) | result.filter(
                 reduce(operator.and_, (Q(content__icontains=x) for x in query_list))
             )
-            return result
+        return result
 
 
 class PostView(DetailView):
