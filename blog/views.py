@@ -5,7 +5,6 @@ from .models import Post
 import operator
 from functools import reduce
 from django.db.models import Q
-
 # Create your views here.
 
 class Principal(ListView):
@@ -84,3 +83,18 @@ class Viajem(ListView):
 	paginate_by = 5
 	queryset = Post.objects.filter(status='viajem')
 	template_name = 'viajem.html'
+	
+
+def visitor_ip_address(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+    	ip = x_forwarded_for.split(',')[0]
+    else:
+    	ip = request.META.get('REMOTE_ADDR')
+    return ip
+    
+
+
+
+
+
