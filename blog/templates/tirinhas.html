@@ -48,11 +48,8 @@
   </h3>
   {% for post in object_list %}
 	<div class="blog-post">
-		<h2 class="blog-post-title">
-			<a href="posts/{{ post.slug }}">{{ post.title }}</a>
-		</h2>
 		<p class="blog-post-meta"> {{ post.created_at }} <a href="#">Gabriel</a></p>
-		{{ post.summary|safe }}
+		{{ post.content|safe }}
 	</div><!-- /.blog-post -->
   {% endfor %}
 {% endblock %}

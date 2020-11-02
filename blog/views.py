@@ -9,7 +9,7 @@ from django.db.models import Q
 
 class Principal(ListView):
     paginate_by = 5
-    model = Post
+    queryset = Post.objects.all().exclude(status='tirinhas')
     template_name = 'index.html'
 
 
@@ -39,7 +39,7 @@ class Search(ListView):
 
 
 class PostView(DetailView):
-	model = Post
+	queryset = Post.objects.all().exclude(status='tirinhas')
 	template_name = 'detalhes.html'
 
 
@@ -83,18 +83,6 @@ class Viajem(ListView):
 	paginate_by = 5
 	queryset = Post.objects.filter(status='viajem')
 	template_name = 'viajem.html'
-	
-
-def visitor_ip_address(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-    	ip = x_forwarded_for.split(',')[0]
-    else:
-    	ip = request.META.get('REMOTE_ADDR')
-    return ip
-    
-
-
 
 
 
