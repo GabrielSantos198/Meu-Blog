@@ -6,4 +6,4 @@ This is the source code of my blog, his loyalt was inspired by a Bootstrap templ
 * DJANGO
 * And Google Analytics to monitor the site
 
-[Acesss The Website](https://blog-1257.herokuapp.com/)
+[Acess The Website](https://blog-1257.herokuapp.com/)
